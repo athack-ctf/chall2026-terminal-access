@@ -5,6 +5,6 @@
 services:
   web:
     build: .
-    image: chall2025-online-chall
+    image: chall2026-online-chall
     ports:
-      - "2025:2025"
+      - "2026:2026"

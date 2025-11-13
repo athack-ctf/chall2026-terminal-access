@@ -2,10 +2,15 @@
 
 > A brief description of the challenge
 
-## Type
+## Challenge Type
 
 - [ ] **OFF**line
 - [X] **ON**line
+
+## Design Type
+
+- [X] **Black**-Box
+- [ ] **White**-Box
 
 ## Designer(s)
 
@@ -46,7 +51,7 @@ goals and the skills it aims to test in participants.
 
 - **[source/README.md](source/README.md)**: Comprehensive instructions on how to have a running instance of your
   challenge from the source.
-  If your project includes multiple subprojects, please consult us (Anis and Hugo).
+  If your project includes multiple subprojects, please consult us (Alin and William).
 - **[source/*](source/)**: Your source code.
 
 ## 3. Offline Artifacts [OPTIONAL]
@@ -56,7 +61,7 @@ goals and the skills it aims to test in participants.
 
 - **[offline-artifacts/*](offline-artifacts/)**: All files intended to be downloaded by participants
   (e.g., a flagless version of the running binary executable of a pwn challenge).
-  For large files (exceeding 100 MB), please consult us (Anis and Hugo).
+  For large files (exceeding 100 MB), please consult us (Alin and William).
 
 ## 4. Solution
 

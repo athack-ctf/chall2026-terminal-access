@@ -17,17 +17,17 @@ chall = Flask(__name__)\n\
 \n\
 @chall.route('/')\n\
 def hello():\n\
-    return 'Hello @Hack 2025!'\n\
+    return 'Hello @Hack 2026!'\n\
 \n\
 if __name__ == '__main__':\n\
     chall.run(host='0.0.0.0')" > chall.py
 
 # Set environment vars
 ENV FLASK_APP=chall.py
-ENV FLASK_RUN_PORT=2025
+ENV FLASK_RUN_PORT=2026
 
 # Expose the port that the chall will run on
-EXPOSE 2025
+EXPOSE 2026
 
 # Run the chall
 CMD ["flask", "run", "--host=0.0.0.0"]
