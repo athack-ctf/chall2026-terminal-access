@@ -12,9 +12,10 @@
 - [X] **Black**-Box
 - [ ] **White**-Box
 
-## Designer
+## Designer(s)
 
-- Harsh Sawant
+- Ada Lovelace
+- Barbara Liskov
 
 ## Description
 
@@ -25,5 +26,3 @@ The goal is to help develop a beginner participant's intuition about insecure lo
 ## Category
 
 - `web`
-
----
