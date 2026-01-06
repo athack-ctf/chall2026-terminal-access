@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Terminal Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+/* --- ALIEN THEME STYLES --- */
+:root {
+    --color-dark-void: #0d0d1f;
+    --color-alien-green: #39ff14; /* Neon green */
+    --color-purple-haze: #4a0082;
+    --color-light-steel: #b0c4de;
+    --color-dark-steel: #3b3b54;
+    --shadow-glow: 0 0 10px var(--color-alien-green), 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+body {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    background-color: var(--color-dark-void);
+    color: var(--color-light-steel);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-shadow: 0 0 2px var(--color-purple-haze);
+}
+
+.alien-container {
+    background: var(--color-dark-steel);
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid var(--color-alien-green);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+    max-width: 600px; /* Slightly wider for the landing page */
+    width: 90%;
+    margin: auto; /* Ensure it's centered if height is less than 100vh */
+}
+
+h1, h2 {
+    color: var(--color-alien-green);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    text-shadow: var(--shadow-glow);
+}
+
+input[type="text"],
+input[type="password"],
+textarea {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 1px solid var(--color-alien-green);
+    border-radius: 5px;
+    background-color: var(--color-dark-void);
+    color: var(--color-alien-green);
+    box-shadow: inset 0 0 5px rgba(57, 255, 20, 0.5);
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: #7aff7a;
+    box-shadow: 0 0 8px #7aff7a;
+}
+
+button {
+    background-color: var(--color-purple-haze);
+    color: var(--color-alien-green);
+    padding: 12px 25px;
+    border: 2px solid var(--color-alien-green);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-glow);
+}
+
+button:hover {
+    background-color: var(--color-alien-green);
+    color: var(--color-dark-void);
+    box-shadow: 0 0 15px var(--color-alien-green);
+}
+
+.links {
+    text-align: center;
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+.links a {
+    color: var(--color-alien-green);
+    text-decoration: none;
+    padding: 10px 20px;
+    border: 1px solid var(--color-alien-green);
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: all 0.3s;
+    font-weight: bold;
+}
+
+.links a:hover {
+    color: var(--color-dark-void);
+    background-color: var(--color-alien-green);
+    text-shadow: none;
+    box-shadow: 0 0 10px var(--color-alien-green);
+}
+
+.user-info {
+    background-color: var(--color-dark-void);
+    border: 1px solid var(--color-purple-haze);
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 0 10px rgba(74, 0, 130, 0.5);
+}
+
+.user-info strong, .user-info span {
+    color: var(--color-alien-green);
+}
+
+.logout-btn {
+    background-color: #8b0000;
+    border-color: #ff4500;
+    color: #ff4500;
+    box-shadow: 0 0 10px rgba(255, 69, 0, 0.5);
+    padding: 8px 15px;
+    font-size: 14px;
+}
+
+.logout-btn:hover {
+    background-color: #ff4500;
+    color: var(--color-dark-void);
+    box-shadow: 0 0 15px #ff4500;
+}
+
+.flag-message {
+    background-color: #004d00;
+    border: 2px solid var(--color-alien-green);
+    padding: 20px;
+    border-radius: 8px;
+    margin: 20px 0;
+    text-align: center;
+    box-shadow: 0 0 25px var(--color-alien-green);
+}
+
+.flag-message h2 {
+    color: var(--color-alien-green);
+    text-shadow: var(--shadow-glow);
+    font-size: 24px;
+}
+
+.flag-message p {
+    font-size: 20px;
+    font-weight: bold;
+    color: #b0f4b0;
+}
+/* --- END ALIEN THEME STYLES --- */
+    </style>
+</head>
+<body>
+    <div class="alien-container">
+        <h1> Alien Terminal Access </h1>
+        
+        <div id="userInfo" style="display: none;">
+            <div class="user-info">
+                <strong>Access Level:</strong> <span id="username"></span>
+                <button class="logout-btn" onclick="logout()">Logout</button>
+            </div>
+            <div class="post-form" style="display: none;"> 
+                <textarea id="postContent" placeholder="Transmit a new thought to the hive..."></textarea>
+                <button onclick="createPost()">Transmit Data</button>
+            </div>
+        </div>
+        
+        <div id="guestInfo">
+            <p style="text-align: center; color: var(--color-light-steel);">
+                <span style="color: var(--color-alien-green); text-shadow: var(--shadow-glow);">[SYSTEM ALERT]</span> Unauthorized access attempt was detected. Please authenticate to access terminal.
+            </p>
+            <div class="links">
+                <a href="/login">Login (Auth Protocol)</a>
+                <a href="/register">Register (New Profile)</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        if (sessionStorage.getItem('username')) {
+            document.getElementById('userInfo').style.display = 'block';
+            document.getElementById('guestInfo').style.display = 'none';
+            document.getElementById('username').textContent = sessionStorage.getItem('username');
+            
+            if (sessionStorage.getItem('flag')) {
+                const flagDiv = document.createElement('div');
+                flagDiv.className = 'flag-message';
+                flagDiv.innerHTML = '<h2 style="color: inherit;">🎉 Access Granted!</h2><p style="font-size: inherit; font-weight: inherit; color: inherit;">Flag: ' + sessionStorage.getItem('flag') + '</p>';
+                document.querySelector('.alien-container').insertBefore(flagDiv, document.querySelector('.alien-container').firstChild);
+            }
+        }
+
+        function logout() {
+            sessionStorage.clear();
+            window.location.reload();
+        }
+    </script>
+</body>
+</html>

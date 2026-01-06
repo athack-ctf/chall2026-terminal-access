@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alien Terminal Access</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+/* --- ALIEN THEME STYLES --- */
+:root {
+    --color-dark-void: #0d0d1f;
+    --color-alien-green: #39ff14; /* Neon green (success/info) */
+    --color-purple-haze: #4a0082;
+    --color-light-steel: #b0c4de;
+    --color-dark-steel: #3b3b54;
+    --color-error: #ff4500; /* Red-Orange for errors */
+    --shadow-glow: 0 0 10px var(--color-alien-green), 0 0 20px rgba(57, 255, 20, 0.4);
+}
+
+body {
+    font-family: 'Space Mono', 'Courier New', monospace;
+    background-color: var(--color-dark-void);
+    color: var(--color-light-steel);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    text-shadow: 0 0 2px var(--color-purple-haze);
+}
+
+.alien-container {
+    background: var(--color-dark-steel);
+    padding: 40px;
+    border-radius: 15px;
+    border: 2px solid var(--color-alien-green);
+    box-shadow: 0 0 30px rgba(57, 255, 20, 0.2);
+    max-width: 450px;
+    width: 90%;
+}
+
+h1, h2 {
+    color: var(--color-alien-green);
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 30px;
+    text-shadow: var(--shadow-glow);
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 10px 0 20px 0;
+    border: 1px solid var(--color-alien-green);
+    border-radius: 5px;
+    background-color: var(--color-dark-void);
+    color: var(--color-alien-green);
+    box-shadow: inset 0 0 5px rgba(57, 255, 20, 0.5);
+    font-family: inherit;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+input:focus {
+    outline: none;
+    border-color: #7aff7a;
+    box-shadow: 0 0 8px #7aff7a;
+}
+
+button {
+    background-color: var(--color-purple-haze);
+    color: var(--color-alien-green);
+    padding: 12px 25px;
+    border: 2px solid var(--color-alien-green);
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: all 0.3s;
+    box-shadow: var(--shadow-glow);
+    width: 100%; /* Full width button for forms */
+}
+
+button:hover {
+    background-color: var(--color-alien-green);
+    color: var(--color-dark-void);
+    box-shadow: 0 0 15px var(--color-alien-green);
+}
+
+.links {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.links a {
+    color: var(--color-alien-green);
+    text-decoration: none;
+    margin: 0 15px;
+    text-transform: uppercase;
+    transition: color 0.3s;
+}
+
+.links a:hover {
+    color: #7aff7a;
+    text-decoration: underline;
+    text-shadow: 0 0 5px #7aff7a;
+}
+
+.message {
+    text-align: center;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    font-weight: bold;
+    display: none;
+}
+
+.message.error {
+    color: var(--color-error);
+    border: 1px solid var(--color-error);
+    background-color: rgba(255, 69, 0, 0.1);
+    box-shadow: 0 0 8px var(--color-error);
+}
+
+.message.info {
+    color: var(--color-light-steel);
+    border: 1px solid var(--color-light-steel);
+    background-color: rgba(176, 196, 222, 0.1);
+}
+
+.message.success {
+    color: var(--color-alien-green);
+    border: 1px solid var(--color-alien-green);
+    background-color: rgba(57, 255, 20, 0.1);
+    box-shadow: 0 0 8px var(--color-alien-green);
+}
+/* --- END ALIEN THEME STYLES --- */
+    </style>
+</head>
+<body>
+    <div class="alien-container">
+        <h2>Galactic Profile Creation </h2>
+        
+        <label for="username">New Access ID:</label>
+        <input type="text" id="username" placeholder="Enter desired Intergalactic ID" required>
+        
+        <label for="password">Create Security Key:</label>
+        <input type="password" id="password" placeholder="Enter encrypted key" required>
+        
+        <button onclick="register()">Generate Profile</button>
+        
+        <div id="message" class="message"></div>
+        
+        <div class="links">
+            <a href="/">Transmission Hub</a>
+            <a href="/login">Auth Protocol</a>
+        </div>
+    </div>
+
+    <script>
+        async function register() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const messageDiv = document.getElementById('message');
+            
+            if (!username || !password) {
+                showMessage('Please fill in all fields', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/register', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ username, password })
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showMessage('Registration successful! Redirecting to login...', 'success');
+                    setTimeout(() => {
+                        window.location.href = '/login';
+                    }, 1500);
+                } else {
+                    showMessage(data.error || 'Registration failed', 'error');
+                }
+            } catch (error) {
+                showMessage('An error occurred. Please try again.', 'error');
+            }
+        }
+        
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+        }
+    </script>
+    </body>
+</html>
