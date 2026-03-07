@@ -11,10 +11,10 @@ category: "Web"
 
 # DO NOT remove the vertical character "|" (aka pipe character)
 description: |
-  
   The Aliens have planted hidden terminals everywhere! We've found one of the them, but it is protected by some authentication mechanism.
+
   Bypass it and help us get their secrets!
-  
+
   [Start your challenge instance](https://instancer.athackctf.com/chall2026-terminal-access/create)
 
 # The field connection_info is used to provide a link, hostname, or instructions on how to connect to a challenge
