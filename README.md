@@ -14,8 +14,7 @@
 
 ## Designer(s)
 
-- Ada Lovelace
-- Barbara Liskov
+- Harsh Sawant
 
 ## Description
 

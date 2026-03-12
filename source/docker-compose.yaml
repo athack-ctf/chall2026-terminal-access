@@ -1,0 +1,11 @@
+name: chall2026-terminal-access
+
+services:
+  terminal-access:
+    image: athack-ctf/chall2026-terminal-access:latest
+    container_name: chall2026-terminal-access
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "2026:2026"

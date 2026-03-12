@@ -1,6 +1,0 @@
-services:
-  web:
-    build: .
-    image: chall2026-online-chall
-    ports:
-      - "2026:2026"
