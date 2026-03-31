@@ -1,1 +1,0 @@
-The Aliens have planted hidden terminals everywhere! We've found one of the them, but it is protected by some authentication mechanism. Bypass it and help us get their secrets!

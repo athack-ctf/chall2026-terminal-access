@@ -1,27 +1,79 @@
-# Chall - Terminal Access
+# @Hack 2026: Terminal Access
 
-> Simple IDOR to Account Takeover
+> Authored by [Harsh](https://github.com/sudo-i-u-harsh11235).
 
-## Challenge Type
+- **Category**: `Web`
+- **Solves**: `54/120`
+- **Tags**: `beginner`
+- **Protocol**: `http`
 
-- [ ] **OFF**line
-- [X] **ON**line
+> The Aliens have planted hidden terminals everywhere! We've found one of the them, but it is protected by some
+> authentication mechanism.
+>
+> Bypass it and help us get their secrets!
+>
 
-## Design Type
+## Access a dockerized instance
 
-- [X] **Black**-Box
-- [ ] **White**-Box
+Run challenge container using docker compose
 
-## Designer(s)
+```
+docker compose up -d
+```
 
-- Harsh Sawant
+Open below URL on your browser
 
-## Description
+```
+http://localhost:53022/
+```
 
-A IDOR web challenge, during login, after credential check request, another request is sent where an id is taken from the client and the session is set for that id user, however it is not checked whether the credentials used belong to the id of the user passed or not, thus creating a condition where a single pair of correct credentials can let a user access any other user's data.  
+<details>
+<summary>
+How to stop/restart challenge?
+</summary>
 
-The goal is to help develop a beginner participant's intuition about insecure login flows, and testing all requests that the client makes to the server, even the ones that are not directly visible or apparent to a user.
+To stop the challenge run
 
-## Category
+```
+docker compose stop
+```
 
-- `web`
+To restart the challenge run
+
+```
+docker compose restart
+```
+
+</details>
+
+## Reveal Flag(s)
+
+Did you try solving this challenge?
+<details>
+<summary>
+Yes
+</summary>
+
+Did you **REALLY** try solving this challenge?
+
+<details>
+<summary>
+Yes, I promise!
+</summary>
+
+- Flag 1: `ATHACKCTF{1n53cur3_d1r3c7_4l13n_r3f3r3nc3}`
+
+</details>
+</details>
+
+
+---
+
+## About @Hack
+
+[@Hack](https://athackctf.com/) is an annual CTF (Capture The Flag) competition hosted
+by [HEXPLOIT ALLIANCE](https://hexploit-alliance.com/) and [TECHNATION](https://technationcanada.ca/) at Concordia
+University in Montreal, Canada.
+
+---
+[Check more challenges from @Hack 2026](https://github.com/athack-ctf/AtHackCTF-2026-Challenges).
