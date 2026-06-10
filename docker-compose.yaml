@@ -5,7 +5,7 @@ services:
     image: athack-ctf/chall2026-terminal-access:latest
     container_name: chall2026-terminal-access
     build:
-      context: .
-      dockerfile: source/Dockerfile
+      context: ./source
+      dockerfile: Dockerfile
     ports:
       - "53022:2026"
